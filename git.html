@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Git - Control de Versiune</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h1>Git-Hub</h1>
+    <ul>
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="git.html" class="active">Git</a></li>
+      <li><a href="gitbash.html">Git Bash</a></li>
+      <li><a href="github.html">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <article>
+      <h1>Git – Sistemul de Control al Versiunilor</h1>
+      <p>Git este un <strong>sistem distribuit de control al versiunilor</strong> (DVCS), creat de <strong>Linus Torvalds</strong> în 2005 pentru dezvoltarea kernel-ului Linux. Este folosit de peste <strong>95% dintre dezvoltatorii profesioniști</strong> din lume.</p>
+
+     <!-- Înlocuiește <img src="images/git-logo.png"...> cu: -->
+
+<div class="image-container">
+  <div class="icon"><i class="fas fa-code-branch"></i></div>
+  <div class="badge">DVCS</div>
+  <img src="images/git-logo.png" alt="Git Logo" />
+  <div class="caption">Git – Sistem distribuit de control al versiunilor</div>
+</div>
+      <h2>Ce este Controlul de Versiune?</h2>
+      <p>Un sistem de control al versiunilor (VCS) permite:</p>
+      <ul>
+        <li>Înregistrarea fiecărei modificări în fișiere</li>
+        <li>Revenirea la versiuni anterioare</li>
+        <li>Colaborarea între mai mulți dezvoltatori</li>
+        <li>Urmărirea autorului fiecărei modificări</li>
+        <li>Prevenirea conflictelor și pierderii codului</li>
+      </ul>
+
+      <h2>Tipuri de Sisteme de Control al Versiunilor</h2>
+      <table>
+        <tr><th>Tip</th><th>Exemplu</th><th>Descriere</th></tr>
+        <tr><td>Local</td><td>rcs</td><td>Salvează patch-uri pe disc local</td></tr>
+        <tr><td>Centralizat</td><td>SVN, CVS</td><td>Un singur server cu toate versiunile</td></tr>
+        <tr><td><strong>Distribuit</strong></td><td><strong>Git, Mercurial</strong></td><td><strong>Fiecare are o copie completă</strong></td></tr>
+      </table>
+
+      <h2>Arhitectura Git – Cum funcționează?</h2>
+      <p>Git folosește un model de <strong>snapshots</strong>, nu diferențe. Fiecare commit este o fotografie completă a proiectului la acel moment.</p>
+      <ul>
+        <li><code>.git/</code> – directorul ascuns care conține toată istoria</li>
+        <li>Obiecte: <code>blob</code> (fișier), <code>tree</code> (director), <code>commit</code></li>
+        <li>Fiecare obiect are un hash SHA-1 unic</li>
+      </ul>
+
+      <h2>Stadiile unui fișier în Git</h2>
+      <ol>
+        <li><strong>Untracked</strong> – fișier nou, necunoscut de Git</li>
+        <li><strong>Staged</strong> – adăugat cu <code>git add</code></li>
+        <li><strong>Committed</strong> – salvat în repository cu <code>git commit</code></li>
+      </ol>
+
+      <h2>Comenzi esențiale Git – Ghid complet</h2>
+      <pre><code>
+# Configurare inițială
+git config --global user.name "Nume Prenume"
+git config --global user.email "email@tudomain.com"
+git config --global init.defaultBranch main
+
+# Inițializare și clonare
+git init                          # Creează un repo nou
+git clone https://github.com/...  # Clonează un repo existent
+
+# Lucru cu fișiere
+git status                        # Starea curentă
+git add .                         # Adaugă toate fișierele
+git add fisier.html               # Adaugă un fișier
+git commit -m "Mesaj descriptiv"  # Commit cu mesaj
+git log                           # Istoric complet
+git log --oneline --graph         # Istoric vizual
+git diff                          # Diferențe nemodificate
+git diff --staged                 # Diferențe staged
+
+# Ramuri (branching)
+git branch                        # Listează ramurile
+git branch feature/login          # Creează ramură
+git checkout feature/login        # Trece pe ramură
+git checkout -b feature/login     # Creează + trece
+git merge main                    # Îmbină ramura curentă în main
+git branch -d feature/login       # Șterge ramură
+
+# Lucru la distanță
+git remote -v                     # Listează remote-uri
+git remote add origin URL         # Adaugă remote
+git push origin main              # Încarcă pe GitHub
+git pull origin main              # Actualizează local
+git fetch                         # Descarcă fără a îmbina
+
+# Revenire în timp
+git checkout HASH                 # Revine la un commit
+git reset --hard HASH             # Revine forțat
+git revert HASH                   # Creează commit invers
+git stash                         # Salvează temporar
+git stash pop                     # Restaurează
+      </code></pre>
+
+      <h2>Flux de lucru tipic (Git Flow)</h2>
+      <ol>
+        <li><code>main</code> – ramura stabilă, doar cod testat</li>
+        <li><code>develop</code> – ramura de integrare</li>
+        <li><code>feature/*</code> – ramuri pentru funcționalități noi</li>
+        <li><code>release/*</code> – pregătire lansare</li>
+        <li><code>hotfix/*</code> – corecturi urgente</li>
+      </ol>
+
+      <h2>Exemplu practic: Crearea unei funcționalități</h2>
+      <pre><code>
+git checkout main
+git pull origin main
+git checkout -b feature/autentificare
+# ... dezvoltare ...
+git add .
+git commit -m "Adăugat login cu email"
+git push origin feature/autentificare
+# → Creezi Pull Request pe GitHub
+      </code></pre>
+
+      <h2>Avantaje Git față de SVN</h2>
+      <table>
+        <tr><th>Caracteristică</th><th>Git</th><th>SVN</th></tr>
+        <tr><td>Arhitectură</td><td>Distribuit</td><td>Centralizat</td></tr>
+        <tr><td>Lucru offline</td><td>Da</td><td>Nu</td></tr>
+        <tr><td>Viteza ramurilor</td><td>Foarte rapid</td><td>Lent</td></tr>
+        <tr><td>Integritate date</td><td>SHA-1</td><td>Număr revizie</td></tr>
+        <tr><td>Cost ramuri</td><td>Ieftin</td><td>Scump</td></tr>
+      </table>
+
+      <h2>Statistici Git (2025)</h2>
+      <ul>
+        <li>Peste <strong>3 miliarde de commit-uri</strong> pe GitHub</li>
+        <li><strong>95%</strong> din proiectele open-source folosesc Git</li>
+        <li>Integrat în <strong>VS Code, IntelliJ, PyCharm, Eclipse</strong></li>
+        <li>Suport nativ în <strong>GitHub, GitLab, Bitbucket</strong></li>
+      </ul>
+
+      <h2>Resurse oficiale</h2>
+      <a href="https://git-scm.com/book/en/v2" target="_blank" class="btn">Pro Git Book (gratuit)</a>
+      <a href="https://git-scm.com/docs" target="_blank" class="btn">Documentație oficială</a>
+      <a href="https://ohshitgit.com" target="_blank" class="btn">Oh Shit, Git! (salvare rapidă)</a>
+
+      <h2>Comenzi avansate (bonus)</h2>
+      <pre><code>
+git rebase main                   # Rescrie istoria
+git cherry-pick HASH              # Aplică un commit specific
+git reflog                        # Istoric comenzi (salvează de la dezastru)
+git bisect                        # Caută bug-ul binar
+git blame fisier.html             # Cine a scris fiecare linie
+      </code></pre>
+
+      <p><strong>Git nu este doar un tool – este o filozofie de colaborare.</strong></p>
+    </article>
+
+    <footer>
+      <p>© 2025 Studiu de Caz – Asistență Managementul Proiectelor Software</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Git Bash - Terminal Git</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h1>Git-Hub</h1>
+    <ul>
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="git.html">Git</a></li>
+      <li><a href="gitbash.html" class="active">Git Bash</a></li>
+      <li><a href="github.html">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <article>
+      <h1>Git Bash – Terminalul Esențial pentru Git pe Windows</h1>
+      <p>Git Bash este un mediu de linie de comandă bazat pe <strong>Bash (Bourne Again SHell)</strong>, inclus în instalarea oficială Git pentru Windows. Emulează un terminal Linux, permițând utilizarea comenzilor Git și utilitarelor Unix într-un mod nativ.</p>
+<div class="image-container">
+  <div class="icon"><i class="fas fa-terminal"></i></div>
+  <div class="badge">Windows</div>
+  <img src="images/gitbash.png" alt="Git Bash" />
+  <div class="caption">Git Bash – Terminal Unix integrat</div>
+</div>
+
+
+      <h2>Ce este Git Bash?</h2>
+      <ul>
+        <li>Parte din <strong>Git for Windows</strong> (MSYS2 + MinGW)</li>
+        <li>Include: <code>bash</code>, <code>git</code>, <code>ssh</code>, <code>curl</code>, <code>nano</code>, <code>grep</code>, etc.</li>
+        <li>Rulează în <strong>fereastră Windows</strong>, dar cu sintaxă Unix</li>
+        <li>Suport pentru scripturi <code>.sh</code>, alias-uri, variabile de mediu</li>
+      </ul>
+
+      <h2>Instalare Git Bash (pas cu pas)</h2>
+      <ol>
+        <li>Descarcă de pe <a href="https://git-scm.com/download/win" target="_blank">git-scm.com</a></li>
+        <li>Rulează instalatorul</li>
+        <li>Alege opțiunile:
+          <ul>
+            <li><strong>Use Git from Git Bash only</strong> → recomandat</li>
+            <li><strong>Enable Git Credential Manager</strong></li>
+            <li><strong>Use the nano editor by default</strong></li>
+            <li><strong>Enable file system caching</strong></li>
+          </ul>
+        </li>
+        <li>Finalizează → vei avea <strong>Git Bash</strong> în meniul Start</li>
+      </ol>
+
+      <h2>Comenzi esențiale în Git Bash</h2>
+      <pre><code>
+# Navigare
+pwd                          # Afișează calea curentă
+ls                           # Listează fișiere
+ls -la                       # Toate fișierele (inclusiv ascunse)
+cd "studiu de caz"           # Intră în folder
+cd ..                        # Urcă un nivel
+cd ~                         # Mergi în folderul home
+
+# Fișiere și directoare
+mkdir nou                    # Creează director
+touch index.html             # Creează fișier gol
+cp fisier.html backup.html   # Copiază
+mv fisier.html alt/          # Mută / redenumește
+rm fisier.html               # Șterge
+rm -r folder/                # Șterge recursiv
+
+# Vizualizare și editare
+cat README.md                # Afișează conținut
+nano index.html              # Editează cu nano
+code .                       # Deschide în VS Code
+start .                      # Deschide folderul în Explorer
+
+# Căutare și filtrare
+grep "text" *.html           # Caută în fișiere
+find . -name "*.html"        # Găsește fișiere
+history                      # Istoric comenzi
+Ctrl+R                       # Caută în istoric
+      </code></pre>
+
+      <h2>Configurare Git în Git Bash</h2>
+      <pre><code>
+# Identitate
+git config --global user.name "Nume Prenume"
+git config --global user.email "email@tudomain.com"
+
+# Editor implicit
+git config --global core.editor "nano"
+git config --global core.editor "code --wait"  # VS Code
+
+# Alias-uri utile
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.cm "commit -m"
+git config --global alias.lg "log --oneline --graph --all"
+
+# Exemplu: git lg → istoric frumos
+      </code></pre>
+
+      <h2>Exemplu complet: Inițializare proiect</h2>
+      <div class="image-container">
+  <img src="images/gitbash.png" alt="Inițializare proiect" />
+  <div class="caption">Exemplu: <code>git init</code> și <code>git add</code></div>
+</div>
+      <pre><code>
+mkdir "studiu de caz"
+cd "studiu de caz"
+git init
+echo "# Studiu de Caz" > README.md
+touch index.html git.html gitbash.html github.html
+git add .
+git commit -m "Inițializare proiect cu 4 pagini HTML"
+git branch -M main
+git remote add origin https://github.com/tu/studiu-de-caz.git
+git push -u origin main
+      </code></pre>
+
+      <h2>Trucuri și comenzi avansate</h2>
+      <table>
+        <tr><th>Comandă</th><th>Descriere</th></tr>
+        <tr><td><code>clear</code> sau <code>Ctrl+L</code></td><td>Curăță terminalul</td></tr>
+        <tr><td><code>!!</code></td><td>Repetă ultima comandă</td></tr>
+        <tr><td><code>git status -s</code></td><td>Stare scurtă</td></tr>
+        <tr><td><code>git log --author="Nume"</code></td><td>Filtrează commit-uri</td></tr>
+        <tr><td><code>git diff --color-words</code></td><td>Diferențe pe cuvinte</td></tr>
+        <tr><td><code>git config --global credential.helper cache</code></td><td>Memorează parola 15 min</td></tr>
+      </table>
+
+      <h2>Alias-uri recomandate (copiază în terminal)</h2>
+      <pre><code>
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.visual '!gitk'
+git config --global alias.amend 'commit --amend'
+git config --global alias.praise 'blame'
+      </code></pre>
+
+      <h2>Integrare cu alte tool-uri</h2>
+      <ul>
+        <li><strong>VS Code</strong>: <code>code .</code> deschide proiectul</li>
+        <li><strong>GitHub CLI</strong>: <code>gh auth login</code> → autentificare rapidă</li>
+        <li><strong>SSH Keys</strong>: <code>ssh-keygen -t ed25519 -C "email"</code></li>
+        <li><strong>Windows Terminal</strong>: setează Git Bash ca profil implicit</li>
+      </ul>
+
+      <h2>Statistici Git Bash (2025)</h2>
+      <ul>
+        <li><strong>70% din utilizatorii Windows</strong> folosesc Git Bash</li>
+        <li>Inclus în peste <strong>50 milioane de instalări Git</strong></li>
+        <li>Suportă <strong>Unicode, emoji, culori ANSI</strong></li>
+        <li>Actualizat lunar prin <strong>Git for Windows</strong></li>
+      </ul>
+
+      <h2>Resurse oficiale</h2>
+      <a href="https://git-scm.com/download/win" target="_blank" class="btn">Descarcă Git (include Git Bash)</a>
+      <a href="https://ohmybash.nntoan.com" target="_blank" class="btn">Oh My Bash! (temă frumoasă)</a>
+      <a href="https://github.com/git-for-windows/git/wiki" target="_blank" class="btn">Wiki Git for Windows</a>
+
+      <h2>Comenzi rapide (cheatsheet)</h2>
+      <pre><code>
+Ctrl+A → început linie     Ctrl+E → sfârșit linie
+Ctrl+U → șterge până la început
+Ctrl+K → șterge până la sfârșit
+Tab    → autocompletare
+↑ ↓    → comenzi anterioare
+      </code></pre>
+
+      <p><strong>Git Bash nu este doar un terminal – este poarta ta către lumea open-source.</strong></p>
+    </article>
+
+    <footer>
+      <p>© 2025 Studiu de Caz – Asistență Managementul Proiectelor Software</p>
+    </footer>
+  </main>
+</body>
+</html>

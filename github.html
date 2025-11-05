@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub - Platforma de Colaborare</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h1>Git-Hub</h1>
+    <ul>
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="git.html">Git</a></li>
+      <li><a href="gitbash.html">Git Bash</a></li>
+      <li><a href="github.html" class="active">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <article>
+      <h1>GitHub – Platforma #1 pentru Dezvoltare Software</h1>
+      <p>GitHub este cea mai mare platformă de găzduire a codului sursă din lume, fondată în 2008. Găzduiește peste <strong>420 milioane de repository-uri</strong> și este folosită de <strong>100+ milioane de dezvoltatori</strong> și companii precum Microsoft, Google, NASA, Tesla și SpaceX.</p>
+
+     <!-- Înlocuiește <img src="images/github-logo.png"...> cu: -->
+
+<div class="image-container">
+  <div class="icon"><i class="fas fa-cloud"></i></div>
+  <div class="badge">420M+</div>
+  <img src="images/github-logo.png" alt="GitHub Logo" />
+  <div class="caption">GitHub – Platforma globală de colaborare</div>
+</div>
+
+      <h2>Istoric GitHub</h2>
+      <ul>
+        <li><strong>2008</strong>: Lansare de Chris Wanstrath, PJ Hyett, Tom Preston-Werner</li>
+        <li><strong>2018</strong>: Achiziționat de Microsoft pentru <strong>7.5 miliarde USD</strong></li>
+        <li><strong>2020</strong>: GitHub Actions, Codespaces</li>
+        <li><strong>2023</strong>: GitHub Copilot (AI)</li>
+        <li><strong>2025</strong>: Peste <strong>1 miliard de pull requests</strong></li>
+      </ul>
+
+      <h2>Funcționalități cheie GitHub</h2>
+      <table>
+        <tr><th>Funcționalitate</th><th>Descriere</th></tr>
+        <tr><td><strong>Pull Requests</strong></td><td>Propuneri de modificări cu review de cod</td></tr>
+        <tr><td><strong>Issues</strong></td><td>Task-uri, bug-uri, feature requests</td></tr>
+        <tr><td><strong>Projects</strong></td><td>Tablouri Kanban pentru gestionare</td></tr>
+        <tr><td><strong>Actions</strong></td><td>CI/CD automatizat</td></tr>
+        <tr><td><strong>Pages</strong></td><td>Hostare gratuită pentru site-uri statice</td></tr>
+        <tr><td><strong>Codespaces</strong></td><td>Mediu de dezvoltare în cloud</td></tr>
+        <tr><td><strong>Copilot</strong></td><td>Asistent AI pentru cod</td></tr>
+      </table>
+
+      <h2>GitHub Pages – Hostare gratuită</h2>
+      <p>Poți publica orice site static (HTML, CSS, JS) gratuit.</p>
+      <pre><code>
+# Pași:
+1. Încarcă fișierele în branch-ul main
+2. Settings → Pages
+3. Source: Deploy from a branch → main / (root)
+4. Salvează → site live în 1 minut!
+
+Link-ul tău: https://numele-tau.github.io/studiu-de-caz
+      </code></pre>
+
+      <h2>GitHub Actions – CI/CD automat</h2>
+      <p>Rulează scripturi la fiecare push, pull request etc.</p>
+      <pre><code>
+# Exemplu: .github/workflows/ci.yml
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Verifică HTML
+        run: npx html-validate .
+      - name: Deploy Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+      </code></pre>
+
+      <h2>GitHub CLI – Terminal pentru GitHub</h2>
+      <pre><code>
+# Instalare
+winget install --id GitHub.cli
+
+# Autentificare
+gh auth login
+
+# Comenzi utile
+gh repo create studiu-de-caz --public
+gh pr create --title "Adăugat Git Bash" --body "Detalii..."
+gh issue list
+gh workflow run
+gh api repos/octocat/hello-world
+      </code></pre>
+
+      <h2>Colaborare pe GitHub</h2>
+      <ol>
+        <li><strong>Fork</strong> → copiezi un repo</li>
+        <li><strong>Clone</strong> → <code>git clone</code></li>
+        <li><strong>Branch</strong> → <code>git checkout -b fix/bug</code></li>
+        <li><strong>Commit</strong> → <code>git commit -m "..."</code></li>
+        <li><strong>Push</strong> → <code>git push origin fix/bug</code></li>
+        <li><strong>Pull Request</strong> → propui modificarea</li>
+        <li><strong>Review</strong> → comentarii, aprobare</li>
+        <li><strong>Merge</strong> → integrare în main</li>
+      </ol>
+
+      <h2>Securitate pe GitHub</h2>
+      <ul>
+        <li><strong>Dependabot</strong>: actualizează dependințele automat</li>
+        <li><strong>CodeQL</strong>: scanare statică pentru vulnerabilități</li>
+        <li><strong>Secret Scanning</strong>: detectează chei API expuse</li>
+        <li><strong>2FA obligatoriu</strong> pentru toți utilizatorii (2024)</li>
+      </ul>
+
+      <h2>Statistici GitHub 2025</h2>
+      <table>
+        <tr><th>Metrică</th><th>Valoare</th></tr>
+        <tr><td>Utilizatori</td><td>100+ milioane</td></tr>
+        <tr><td>Repository-uri</td><td>420+ milioane</td></tr>
+        <tr><td>Pull Requests</td><td>1+ miliard</td></tr>
+        <tr><td>Commit-uri zilnice</td><td>8+ milioane</td></tr>
+        <tr><td>Proiecte open-source</td><td>96%</td></tr>
+        <tr><td>Organizații</td><td>4+ milioane</td></tr>
+      </table>
+
+      <h2>Exemplu: Creare repo + Pages</h2>
+      <pre><code>
+# În Git Bash
+mkdir site-meu
+cd site-meu
+echo "<h1>Hello GitHub Pages!</h1>" > index.html
+git init
+git add .
+git commit -m "Primul site"
+git branch -M main
+git remote add origin https://github.com/tu/site-meu.git
+git push -u origin main
+
+# → Settings → Pages → main / (root)
+# → Site live: https://tu.github.io/site-meu
+      </code></pre>
+
+      <h2>GitHub pentru echipe</h2>
+      <ul>
+        <li><strong>Organization</strong>: cont pentru echipă</li>
+        <li><strong>Teams</strong>: grupuri cu permisiuni</li>
+        <li><strong>Code Owners</strong>: review obligatoriu</li>
+        <li><strong>Discussions</strong>: forum în repo</li>
+        <li><strong>Wikis</strong>: documentație internă</li>
+      </ul>
+
+      <h2>Resurse oficiale</h2>
+      <a href="https://github.com" target="_blank" class="btn">GitHub.com</a>
+      <a href="https://docs.github.com" target="_blank" class="btn">Documentație oficială</a>
+      <a href="https://cli.github.com" target="_blank" class="btn">GitHub CLI</a>
+      <a href="https://github.com/skills" target="_blank" class="btn">GitHub Skills (cursuri gratuite)</a>
+
+      <h2>Comenzi rapide GitHub</h2>
+      <table>
+        <tr><th>Tastă</th><th>Acțiune</th></tr>
+        <tr><td><code>t</code></td><td>Caută fișiere</td></tr>
+        <tr><td><code>.</code></td><td>Deschide în VS Code (web)</td></tr>
+        <tr><td><code>?</code></td><td>Ajutor tastatură</td></tr>
+        <tr><td><code>c</code></td><td>Creează fișier</td></tr>
+        <tr><td><code>u</code></td><td>Upload fișier</td></tr>
+      </table>
+
+      <h2>GitHub Copilot (AI)</h2>
+      <ul>
+        <li>Sugerează cod în timp real</li>
+        <li>Înțelege comentarii în română</li>
+        <li>Exemplu: „// creează un buton roșu” → generează HTML/CSS</li>
+        <li>Disponibil în VS Code, JetBrains</li>
+      </ul>
+
+      <p><strong>GitHub nu este doar un loc pentru cod – este o comunitate globală de inovare.</strong></p>
+    </article>
+
+    <footer>
+      <p>© 2025 Studiu de Caz – Asistență Managementul Proiectelor Software</p>
+    </footer>
+  </main>
+</body>
+</html>
